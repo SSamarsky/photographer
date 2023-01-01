@@ -227,6 +227,7 @@ ul {
 .skill__title {
     margin-bottom: 20px;
     font-weight: 700;
+    font-size: 20px;
     line-height: 40px;
 }
 
@@ -272,4 +273,33 @@ ul {
 .portfolio__photo {
     width: 450px;
     height: 560px;
+}
+
+.video {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 20px);
+    background-image: url(assets/images/video.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.video__btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: transparent;
+}
+
+.video__icon {
+    fill: #fff;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.video__icon:hover {
+    fill: #BDAE82;
 }
