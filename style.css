@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth; 
+}
+
 body {
     margin: 0;
     background-color: #000;
@@ -177,4 +181,51 @@ ul {
     margin-bottom: 25px;
     line-height: 40px;
     width: 470px;
+}
+
+/* ----- Skills ----- */
+
+.section__title {
+    margin: 100px auto 60px;
+    width: 700px;
+    text-align: center;
+    background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);
+}
+
+.title__text {
+    padding: 0 20px;
+    display: inline;
+    font-size: 40px;
+    font-family: 'Merriweather', serif;
+    line-height: 80px;
+    color: #BDAE82;
+    background-color: #000;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    justify-content: center;
+    column-gap: 40px;
+    row-gap: 80px;
+}
+
+.skill {
+    padding: 0 20px;
+    text-align: center;
+}
+
+.skill__icon {
+    margin-bottom: 45px;
+}
+
+.skill__title {
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.skill__text {
+    font-size: 18px;
+    line-height: 36px;
 }
