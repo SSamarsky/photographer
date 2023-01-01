@@ -44,6 +44,7 @@ ul {
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
+    height: 100%;
     max-width: 1440px;
 }
 
@@ -75,6 +76,7 @@ ul {
 }
 
 .header__inner {
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -280,7 +282,7 @@ ul {
     margin: 0 auto;
     position: relative;
     width: 100%;
-    background-image: url(assets/images/video.jpg);
+    background-image: url(assets/images/video-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -345,4 +347,100 @@ ul {
     display: block;
     font-size: 18px;
     line-height: 36px;
+}
+
+.contact {
+    margin: 0 auto;
+    height: 700px;
+    background-image: url("assets/images/contact-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contact__inner {
+    margin-left: auto;
+    max-width: 450px;
+    height: 445px;
+}
+
+.contact__title {
+    padding-top: 60px;
+    margin-bottom: 40px;
+    font-size: 40px;
+    line-height: 80px;
+    font-family: 'Merriweather', serif;
+    color: #BDAE82;
+}
+
+.input {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, .5);
+    border: 2px solid #BDAE82;
+    font-size: 20px;
+    color: #bdae82;
+}
+
+.input::placeholder {
+    font-family: inherit;
+    color: #bdae82;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #bdae82;
+    transition: background-color 0s ease-in-out 9000s;
+}
+
+.textarea {
+    padding-top: 10px;
+    margin-bottom: 25px;
+    height: 100px;
+    resize: none;
+    width: 100%;
+}
+
+.footer {
+    height: 150px;
+    width: 100%;
+}
+
+.footer__inner {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__info {
+    display: flex;
+    gap: 20px;
+}
+
+.footer__link {
+    transition: color .2s ease-in-out;
+}
+
+.footer__link:hover {
+    color: #BDAE82;
+}
+
+.footer__social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social__icon {
+    fill: #fff;
+    transition: color .2s ease-in-out;
+}
+
+.social__icon:hover {
+    fill: #BDAE82;
 }
