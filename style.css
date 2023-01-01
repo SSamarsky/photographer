@@ -276,10 +276,10 @@ ul {
 }
 
 .video {
+    padding-top: 50.4%;
     margin: 0 auto;
     position: relative;
     width: 100%;
-    height: calc(100vh - 20px);
     background-image: url(assets/images/video.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -302,4 +302,47 @@ ul {
 
 .video__icon:hover {
     fill: #BDAE82;
+}
+
+.price {
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 25px;
+}
+
+.price__item {
+    padding: 50px 20px;
+    padding-bottom: 40px;
+    text-align: center;
+    border: 2px solid #BDAE82;
+}
+
+.price__title {
+    margin-bottom: 45px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+}
+
+.price__count {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #BDAE82;
+    font-family: 'Merriweather', serif;
+}
+
+.price__info {
+    margin: 0 auto 40px;
+    max-height: 180px;
+    max-width: 364px;
+}
+
+.price__text {
+    display: block;
+    font-size: 18px;
+    line-height: 36px;
 }
