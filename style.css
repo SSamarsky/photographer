@@ -1,5 +1,5 @@
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
 body {
@@ -153,6 +153,29 @@ ul {
 
 /* ----- Main ----- */
 
+.section {
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.section__title {
+    margin: 0 auto;
+    margin-bottom: 60px;
+    width: 700px;
+    text-align: center;
+    background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);
+}
+
+.title__text {
+    padding: 0 20px;
+    display: inline;
+    font-size: 40px;
+    font-family: 'Merriweather', serif;
+    line-height: 80px;
+    color: #BDAE82;
+    background-color: #000;
+}
+
 .intro {
     margin: 0 auto;
     height: 910px;
@@ -183,26 +206,8 @@ ul {
     width: 470px;
 }
 
-/* ----- Skills ----- */
-
-.section__title {
-    margin: 100px auto 60px;
-    width: 700px;
-    text-align: center;
-    background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);
-}
-
-.title__text {
-    padding: 0 20px;
-    display: inline;
-    font-size: 40px;
-    font-family: 'Merriweather', serif;
-    line-height: 80px;
-    color: #BDAE82;
-    background-color: #000;
-}
-
 .skills {
+    padding-bottom: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
     justify-content: center;
@@ -228,4 +233,43 @@ ul {
 .skill__text {
     font-size: 18px;
     line-height: 36px;
+}
+
+.buttons {
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);
+    justify-content: center;
+    grid-gap: 5px;
+}
+
+.buttons__item {
+    height: 55px;
+    cursor: pointer;
+    color: #BDAE82;
+    background-color: #000;
+    border: 2px solid #BDAE82;
+    transition: all .2s ease-in-out;
+}
+
+.buttons__item:hover {
+    background-color: #BDAE82;
+    color: #000;
+}
+
+.buttons__item.active {
+    background-color: #BDAE82;
+    color: #000;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+    justify-content: center;
+    grid-gap: 25px;
+}
+
+.portfolio__photo {
+    width: 450px;
+    height: 560px;
 }
