@@ -77,6 +77,7 @@ ul {
 
 .header__inner {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,22 +132,6 @@ ul {
 
 .switch__link.active {
     color: #BDAE82;
-}
-
-.theme {
-    margin-left: 10px;
-    width: 45px;
-    height: 45px;
-    background-image: url("assets/img/sun.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    transition: all .2s linear;
-}
-
-.theme:hover {
-    background-image: url("assets/img/sun-hover.svg");
 }
 
 .burger {
@@ -405,6 +390,9 @@ input:-webkit-autofill:active {
     width: 100%;
 }
 
+
+/* ----- Footer ----- */
+
 .footer {
     height: 150px;
     width: 100%;
@@ -443,4 +431,229 @@ input:-webkit-autofill:active {
 
 .social__icon:hover {
     fill: #BDAE82;
+}
+
+
+/* ----- Media ----- */
+
+
+@media (max-width: 1456px) {
+    .skills {
+        grid-template-columns: 320px 320px;
+    }
+}
+
+@media (max-width: 952px) {
+    .buttons {
+        grid-template-columns: 220px 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 60px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .header__right {
+        justify-content: start;
+    }
+
+    .burger {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        cursor: pointer;
+        user-select: none;
+        z-index: 20;
+    }
+
+    .burger:hover div {
+        background-color: #BDAE82;
+    }
+
+    .burger-line {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        margin: 4px 0;
+        z-index: 20px;
+        transition: all .2s ease-in-out;
+    }
+
+    .burger.open .line-1 {
+        transform: rotate(-45deg) translate(-5px, 10px);
+    }
+
+    .burger.open .line-2 {
+        opacity: 0;
+    }
+
+    .burger.open .line-3 {
+        transform: rotate(45deg) translate(-5px, -10px);
+    }
+
+    .intro {
+        height: 590px;
+        background-position: left 25px bottom 20px;
+    }
+
+    .hero {
+        padding-top: 168px;
+        padding-left: 0px;
+        max-width: 500px;
+        max-height: 330px;
+    }
+
+    .hero__title {
+        margin-bottom: 19px;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 64px;
+
+    }
+
+    .hero__text {
+        margin-bottom: 60px;
+        line-height: 24px;
+        width: 390px;
+    }
+
+    .section {
+        padding-top: 80px;
+    }
+
+    .section__title {
+        margin-bottom: 50px;
+        width: 364px;
+        background-image: linear-gradient(to top, #000 39px, #bdae82 39px, #bdae82 41px, #000 41px);
+    }
+
+    .title__text {
+        padding: 0 21px;
+        font-size: 32px;
+        line-height: 80px;
+    }
+
+    .skills {
+        padding-bottom: 0;
+        grid-template-columns: repeat(300px);
+        column-gap: 44px;
+        row-gap: 36px;
+    }
+
+    .skill {
+        padding-top: 0;
+    }
+
+    .skill__icon {
+        margin-bottom: 30px;
+    }
+
+    .skill__title {
+        margin-bottom: 20px;
+        line-height: 40px;
+    }
+
+    .skill__text {
+        margin-bottom: 40px;
+    }
+
+    .video__icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .contact {
+        height: 600px;
+    }
+
+    .contact__inner {
+        margin: 0 auto;
+        width: 450px;
+        height: 430px;
+        text-align: center;
+    }
+
+    .footer {
+        height: 190px;
+    }
+
+    .footer__inner {
+        padding: 30px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer__social {
+        margin: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .intro {
+        background-position-x: center;
+    }
+
+    .skills {
+        grid-template-columns: 300px;
+    }
+
+    .contact {
+        background-position-x: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin: 0 auto;
+    }
+
+    .section__title {
+        margin-bottom: 30px;
+    }
+
+    .buttons {
+        grid-template-columns: 220px;
+    }
+
+    .portfolio {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .portfolio__photo {
+        width: 100%;
+        height: auto;
+    }
+
+    .price {
+        grid-template-columns: 1fr;
+    }
+
+    .contact__inner {
+        width: 90%;
+        height: 430px;
+        text-align: center;
+    }
+
+    .input {
+        height: 40px;
+    }
+    .textarea {
+        height: 80px;
+    }
 }
