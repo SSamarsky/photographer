@@ -31,7 +31,7 @@ function changeImages(event) {
 
 buttons.forEach((el) => el.addEventListener("click", changeImages));
 
-// Change Themes
+// Switch Themes
 const switchTheme = document.querySelector(".theme");
 const arrClassesSwitchTheme = document.querySelectorAll([
   ".body",
@@ -185,3 +185,8 @@ function toggleActiveBtn(event) {
 langEn.addEventListener("click", () => getTranslate("en"));
 langRu.addEventListener("click", () => getTranslate("ru"));
 langBtns.forEach((el) => el.addEventListener("click", toggleActiveBtn));
+
+
+// Auto change now year
+const nowYear = (new Date()).getFullYear();
+document.querySelector('#year').textContent = nowYear;
