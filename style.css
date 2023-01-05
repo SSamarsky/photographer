@@ -254,14 +254,16 @@ ul {
     margin: 0 auto;
     height: 910px;
     background-image: url("assets/images/backgrounds/intro-bg.jpg");
-    /* background-position: center; */
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-x: center;
 }
 
 .intro.light-theme {
     background-image: url("assets/images/backgrounds/intro-bg-light.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .hero {
