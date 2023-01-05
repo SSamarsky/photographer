@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photographer's portfolio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <title>Photographer</title>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Merriweather:wght@700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Merriweather:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
 
-<body>
+<body class="body">
     <header class="header">
         <div class="container">
             <div class="header__inner">
@@ -27,26 +29,32 @@
                     <nav class="nav">
                         <ul class="nav__list">
                             <li class="nav__item">
-                                <a class="nav__link" href="#skills">Skills</a>
+                                <a class="nav__link" data-lang="skills" href="#skills">Skills</a>
                             </li>
                             <li class="nav__item">
-                                <a class="nav__link" href="#portfolio">Portfolio</a>
+                                <a class="nav__link"  data-lang="portfolio" href="#portfolio">Portfolio</a>
                             </li>
                             <li class="nav__item">
-                                <a class="nav__link" href="#video">Video</a>
+                                <a class="nav__link"  data-lang="video" href="#video">Video</a>
                             </li>
                             <li class="nav__item">
-                                <a class="nav__link" href="#price">Price</a>
+                                <a class="nav__link"  data-lang="price" href="#price">Price</a>
                             </li>
                             <li class="nav__item">
-                                <a class="nav__link" href="#contacts">Contacts</a>
+                                <a class="nav__link"  data-lang="contacts" href="#contacts">Contacts</a>
                             </li>
                         </ul>
                     </nav>
                     <div class="switch">
-                        <span class="switch__link active">en</span>
+                        <span class="switch__link en active">en</span>
                         /
-                        <span class="switch__link">ru</span>
+                        <span class="switch__link ru">ru</span>
+                    </div>
+                    <div class="theme"></div>
+                    <div class="burger">
+                        <div class="burger__line line-1"></div>
+                        <div class="burger__line line-2"></div>
+                        <div class="burger__line line-3"></div>
                     </div>
                 </div>
             </div>
@@ -58,20 +66,22 @@
         <div class="intro">
             <div class="container">
                 <div class="hero">
-                    <h1 class="hero__title">Alexa Rise</h1>
-                    <p class="hero__text">
+                    <h1 class="hero__title" data-lang="hero__title">Alexa Rise</h1>
+                    <p class="hero__text" data-lang="hero__text">
                         Save sincere emotions, romantic feelings
                         and happy moments of life together with professional
                         photographer Alexa Rise
                     </p>
-                    <button class="btn">Hire me</button>
+                    <a href="#contacts">
+                        <button class="btn" data-lang="hire">Hire me</button>
+                    </a> 
                 </div>
             </div>
         </div>
         <div class="container">
             <section class="section" id="skills">
                 <div class="section__title">
-                    <h2 class="title__text">Skills</h2>
+                    <h2 class="title__text" data-lang="skills">Skills</h2>
                 </div>
                 <div class="skills">
                     <div class="skill">
@@ -93,10 +103,10 @@
                                 d="M31.129 21.1401C35.507 21.2841 39.019 24.8011 39.152 29.1691V29.1821C39.154 29.2201 39.156 29.2651 39.156 29.3111C39.156 30.4431 38.272 31.3681 37.156 31.4341H37.15C37.145 31.4341 37.138 31.4341 37.132 31.4341C35.987 31.4341 35.059 30.5061 35.059 29.3611C35.02 27.1091 33.215 25.2921 30.972 25.2331H30.966C30.949 25.2331 30.93 25.2341 30.91 25.2341C29.785 25.2341 28.873 24.3221 28.873 23.1971C28.873 23.1651 28.874 23.1341 28.875 23.1021V23.1061C28.929 22.0051 29.836 21.1321 30.946 21.1321C31.01 21.1321 31.073 21.1351 31.135 21.1401L31.127 21.1391L31.129 21.1401Z"
                                 fill="#CCBA8D" />
                         </svg>
-                        <h3 class="skill__title">
+                        <h3 class="skill__title" data-lang="skill__title-1">
                             Digital photography
                         </h3>
-                        <p class="skill__text">
+                        <p class="skill__text" data-lang="skill__text-1">
                             High-quality photos in the studio and on the nature
                         </p>
                     </div>
@@ -107,10 +117,10 @@
                                 d="M59.843 1.30696V48.781C59.465 49.535 58.698 50.043 57.812 50.043C57.748 50.043 57.685 50.04 57.622 50.035L57.63 50.036H2.194C2.128 50.044 2.051 50.048 1.973 50.048C0.876 50.048 -0.0130005 49.159 -0.0130005 48.062C-0.0130005 47.984 -0.00900049 47.907 -4.88944e-07 47.831L-0.00100049 47.84C-0.00100049 32.6133 -0.00100049 17.387 -0.00100049 2.16096C-0.00600049 2.10596 -0.0100005 2.04196 -0.0100005 1.97696C-0.0100005 0.879962 0.878999 -0.00903808 1.976 -0.00903808C2.047 -0.00903808 2.116 -0.00503808 2.185 0.00196192L2.176 0.000961917C20.666 0.000961917 39.1447 0.000961917 57.612 0.000961917C57.687 -0.00803808 57.774 -0.0140381 57.863 -0.0140381C58.75 -0.0140381 59.511 0.524962 59.837 1.29296L59.842 1.30696H59.843ZM22.544 24.983V30.575C22.545 30.941 22.596 31.295 22.69 31.631L22.683 31.603C23.038 32.503 23.901 33.128 24.909 33.128C25.419 33.128 25.892 32.968 26.28 32.695L26.272 32.7C29.6 30.784 32.892 28.85 36.185 26.899C36.865 26.531 37.318 25.823 37.318 25.009C37.318 24.195 36.864 23.487 36.196 23.124L36.185 23.118C32.892 21.097 29.513 19.163 26.133 17.212C25.78 16.992 25.351 16.861 24.892 16.861C23.583 16.861 22.523 17.922 22.523 19.23C22.523 19.28 22.525 19.33 22.528 19.379V19.372C22.65 21.236 22.545 23.118 22.545 24.982L22.544 24.983ZM9.443 6.55096V3.57196H3.572V6.55096H9.443ZM3.484 46.376H9.442V43.449H3.484V46.376ZM18.833 3.57096H13.066V6.53296H18.833V3.57096ZM22.456 3.57096V6.53296H28.24V3.48396L22.456 3.57096ZM37.613 6.55096V3.57196H31.846V6.53396L37.613 6.55096ZM47.038 3.57096H41.219V6.53296H47.038V3.57096ZM37.631 46.394V43.554H31.847V46.481L37.631 46.394ZM18.815 46.394V43.554H13.048V46.481L18.815 46.394ZM28.24 46.394V43.554H22.473V46.498L28.24 46.394ZM47.038 43.449H41.219V46.376H47.038V43.449ZM56.289 6.55096V3.48496H50.627V6.55096H56.289ZM56.289 43.449H50.627V46.393H56.306L56.289 43.449Z"
                                 fill="#BDAE82" />
                         </svg>
-                        <h3 class="skill__title">
+                        <h3 class="skill__title" data-lang="skill__title-2">
                             Video shooting
                         </h3>
-                        <p class="skill__text">
+                        <p class="skill__text" data-lang="skill__text-2">
                             Capture your moments so that they always stay with you
                         </p>
                     </div>
@@ -121,10 +131,10 @@
                                 d="M-1.41598e-05 48.5029V1.49692C0.361986 0.60892 1.21999 -0.00608008 2.21999 -0.00608008C2.27999 -0.00608008 2.33999 -0.00408008 2.39899 0.000919921H2.39099H63.727C63.784 -0.00408008 63.851 -0.00708008 63.918 -0.00708008C65.158 -0.00708008 66.163 0.99792 66.163 2.23792C66.163 2.30492 66.16 2.37192 66.154 2.43692L66.155 2.42892C66.155 11.9029 66.155 21.3779 66.155 30.8339C66.155 36.4749 66.155 42.1149 66.155 47.7559C66.163 47.8219 66.167 47.8989 66.167 47.9769C66.167 49.0759 65.276 49.9669 64.177 49.9669C64.147 49.9669 64.117 49.9659 64.087 49.9649H64.091H2.64499C2.54299 49.9789 2.42599 49.9879 2.30599 49.9879C1.28699 49.9879 0.407986 49.3869 0.00498584 48.5209L-0.00201416 48.5049L-1.41598e-05 48.5029ZM62.066 4.14392H4.12499V32.0919L4.76399 31.6539L15.991 23.6039C16.388 23.2059 16.936 22.9599 17.543 22.9599C18.15 22.9599 18.698 23.2059 19.095 23.6039L30.888 32.0559C32.713 33.3699 34.539 34.6849 36.364 35.9629C36.696 36.2189 37.117 36.3739 37.575 36.3739C38.476 36.3739 39.237 35.7759 39.482 34.9549L39.486 34.9409C39.537 34.7709 39.566 34.5759 39.566 34.3729C39.566 33.5999 39.141 32.9259 38.511 32.5729L38.501 32.5679C35.9577 30.7793 33.469 28.9843 31.035 27.1829L30.469 26.7629L30.798 26.5069L40.966 19.2049C41.363 18.8069 41.911 18.5609 42.518 18.5609C43.125 18.5609 43.673 18.8069 44.07 19.2049L61.412 31.6549L62.051 32.0749L62.066 4.14392Z"
                                 fill="#BDAE82" />
                         </svg>
-                        <h3 class="skill__title">
+                        <h3 class="skill__title" data-lang="skill__title-3">
                             Retouch
                         </h3>
-                        <p class="skill__text">
+                        <p class="skill__text" data-lang="skill__text-3">
                             I strive to make photography surpass reality
                         </p>
                     </div>
@@ -138,24 +148,25 @@
                                 d="M26.326 11.706V16.11H19.04V19.024H26.309V23.412H19.056V26.359H26.194C25.475 31.369 21.212 35.177 16.06 35.177C10.908 35.177 6.64496 31.369 5.93196 26.414L5.92596 26.359H13.097V23.461H5.86096V19.057H13.097V16.126H5.86096V11.755H13.097V8.792H5.95896C6.72396 3.832 10.963 0.0780029 16.078 0.0780029C21.187 0.0780029 25.422 3.823 26.187 8.718L26.194 8.776H19.039V11.707L26.326 11.706Z"
                                 fill="#BDAE82" />
                         </svg>
-                        <h3 class="skill__title">
+                        <h3 class="skill__title" data-lang="skill__title-4">
                             Audio
                         </h3>
-                        <p class="skill__text">
+                        <p class="skill__text" data-lang="skill__text-4">
                             Professional sounds recording for video, advertising, portfolio
                         </p>
                     </div>
+                    
                 </div>
             </section>
             <section class="section">
                 <div class="section__title" id="portfolio">
-                    <h2 class="title__text">Portfolio</h2>
+                    <h2 class="title__text" data-lang="portfolio">Portfolio</h2>
                 </div>
                 <div class="buttons">
-                    <button class="buttons__item">Winter</button>
-                    <button class="buttons__item">Spring</button>
-                    <button class="buttons__item">Summer</button>
-                    <button class="buttons__item active">Autumn</button>
+                    <button class="buttons__item" data-lang="winter" data-season="winter">Winter</button>
+                    <button class="buttons__item" data-lang="spring" data-season="spring">Spring</button>
+                    <button class="buttons__item" data-lang="summer" data-season="summer">Summer</button>
+                    <button class="buttons__item active" data-lang="autumn" data-season="autumn">Autumn</button>
                 </div>
                 <div class="portfolio">
                     <img class="portfolio__photo" src="assets/images/autumn/1.jpg" alt="photo 1">
@@ -167,10 +178,10 @@
                 </div>
             </section>
             <section class="section">
-                <div class="section__title ">
-                    <h2 class="title__text">Video</h2>
+                <div class="section__title" id="video">
+                    <h2 class="title__text" data-lang="video">Video</h2>
                 </div>
-                <div class="video" id="video">
+                <div class="video">
                     <button class="video__btn">
                         <svg class="video__icon" xmlns="http://www.w3.org/2000/svg" width="130" height="130"
                             viewBox="0 0 130 130" fill="none">
@@ -182,44 +193,44 @@
             </section>
             <section class="section">
                 <div class="section__title" id="price">
-                    <h2 class="title__text">Price</h2>
+                    <h2 class="title__text" data-lang="price">Price</h2>
                 </div>
                 <div class="price">
                     <div class="price__item">
-                        <h3 class="price__title">Standard</h3>
+                        <h3 class="price__title" data-lang="price-title-1">Standard</h3>
                         <p class="price__count">500 $</p>
                         <div class="price__info">
-                            <p class="price__text">One location</p>
-                            <p class="price__text">120 photos in color</p>
-                            <p class="price__text">12 photos in retouch</p>
-                            <p class="price__text">Readiness 2-3 weeks</p>
-                            <p class="price__text">Make up, visage</p>
+                            <p class="price__text" data-lang="price-description-1-span-1">One location</p>
+                            <p class="price__text" data-lang="price-description-1-span-2">120 photos in color</p>
+                            <p class="price__text" data-lang="price-description-1-span-3">12 photos in retouch</p>
+                            <p class="price__text" data-lang="price-description-1-span-4">Readiness 2-3 weeks</p>
+                            <p class="price__text" data-lang="price-description-1-span-5">Make up, visage</p>
                         </div>
-                        <button class="btn">Order shooting</button>
+                        <button class="btn btn--border" data-lang="order">Order shooting</button>
                     </div>
                     <div class="price__item">
-                        <h3 class="price__title">Premium</h3>
+                        <h3 class="price__title" data-lang="price-title-2">Premium</h3>
                         <p class="price__count">700 $</p>
                         <div class="price__info">
-                            <p class="price__text">One or two locations</p>
-                            <p class="price__text">200 photos in color</p>
-                            <p class="price__text">20 photos in retouch</p>
-                            <p class="price__text">Readiness 1-2 weeks</p>
-                            <p class="price__text">Make up, visage</p>
+                            <p class="price__text" data-lang="price-description-2-span-1">One or two locations</p>
+                            <p class="price__text" data-lang="price-description-2-span-2">200 photos in color</p>
+                            <p class="price__text" data-lang="price-description-2-span-3">20 photos in retouch</p>
+                            <p class="price__text" data-lang="price-description-2-span-4">Readiness 1-2 weeks</p>
+                            <p class="price__text" data-lang="price-description-2-span-5">Make up, visage</p>
                         </div>
-                        <button class="btn">Order shooting</button>
+                        <button class="btn btn--border" data-lang="order">Order shooting</button>
                     </div>
                     <div class="price__item">
-                        <h3 class="price__title">Gold</h3>
+                        <h3 class="price__title" data-lang="price-title-3">Gold</h3>
                         <p class="price__count">1000 $</p>
                         <div class="price__info">
-                            <p class="price__text">Three locations or more</p>
-                            <p class="price__text">300 photos in color</p>
-                            <p class="price__text">50 photos in retouch</p>
-                            <p class="price__text">Readiness 1 week</p>
-                            <p class="price__text">Make up, visage, hairstyle</p>
+                            <p class="price__text" data-lang="price-description-3-span-1">Three locations or more</p>
+                            <p class="price__text" data-lang="price-description-3-span-2">300 photos in color</p>
+                            <p class="price__text" data-lang="price-description-3-span-3">50 photos in retouch</p>
+                            <p class="price__text" data-lang="price-description-3-span-4">Readiness 1 week</p>
+                            <p class="price__text" data-lang="price-description-3-span-5">Make up, visage, hairstyle</p>
                         </div>
-                        <button class="btn">Order shooting</button>
+                        <button class="btn btn--border" data-lang="order">Order shooting</button>
                     </div>
                 </div>
             </section>
@@ -227,12 +238,12 @@
         <div class="contact" id="contacts">
             <div class="container">
                 <div class="contact__inner">
-                    <h2 class="contact__title">Contact me</h2>
+                    <h2 class="contact__title" data-lang="contact-me">Contact me</h2>
                     <form>
-                        <input class="input" type="email" placeholder="E-mail">
-                        <input class="input" type="tel" placeholder="Phone">
-                        <textarea class="input textarea" cols="auto" rows="auto" placeholder="Message"></textarea>
-                        <button class="btn">Send message</button>
+                        <input class="input" data-lang="email" type="email" placeholder="E-mail">
+                        <input class="input" data-lang="phone" type="tel" placeholder="Phone">
+                        <textarea class="input textarea" data-lang="contact-message" cols="auto" rows="auto" placeholder="Message"></textarea>
+                        <button class="btn" data-lang="send-message">Send message</button>
                     </form>
                 </div>
             </div>
@@ -246,10 +257,10 @@
                     <span>2022</span>
                     <a class="footer__link" href="https://github.com/SSamarsky" target="_blink">github</a>
                 </div>
-                <a class="footer__link" href="https://rs.school/js-stage0/" target="_blink">Rolling Scopes School</a>
+                <a class="footer__link" href="#" target="_blink">S.Samarskiy</a>
                 <ul class="footer__social">
                     <li>
-                        <a href="#" target="_blink">
+                        <a href="https://www.instagram.com" target="_blink">
                             <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                                 viewBox="0 0 32 32" fill="none">
                                 <path
@@ -258,7 +269,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" target="_blink">
+                        <a href="https://www.facebook.com" target="_blink">
                             <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="17" height="28"
                                 viewBox="0 0 17 28" fill="none">
                                 <path
@@ -267,7 +278,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" target="_blink">
+                        <a href="https://twitter.com" target="_blink">
                             <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="22"
                                 viewBox="0 0 28 22" fill="none">
                                 <path
@@ -276,7 +287,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" target="_blink">
+                        <a href="https://www.pinterest.com" target="_blink">
                             <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                 viewBox="0 0 28 28" fill="none">
                                 <path
@@ -288,7 +299,7 @@
             </div>
         </div>
     </footer>
-
+    <div class="overlay"></div>
     <script src="script.js"></script>
 </body>
 
