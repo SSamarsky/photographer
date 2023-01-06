@@ -17,18 +17,17 @@ burger.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 navLinks.forEach((el) => el.addEventListener("click", toggleMenu));
 
-
 // Image caching
-const seasons = ['winter', 'spring', 'summer', 'autumn'];
+const seasons = ["winter", "spring", "summer", "autumn"];
 
 function preloadImages() {
-    seasons.forEach((season, index) => {
-        for(let i = 1; i <= 6; i++) {
-            const img = new Image();
-            img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
-          }
-    });
-  }
+  seasons.forEach((season, index) => {
+    for (let i = 1; i <= 6; i++) {
+      const img = new Image();
+      img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
+    }
+  });
+}
 
 preloadImages();
 
@@ -176,7 +175,7 @@ const languages = {
     autumn: "Осень",
     "price-title-1": "Стандарт",
     "price-title-2": "Премиум",
-    "price-title-3    ": "Золото",
+    "price-title-3": "Золото",
     "price-description-1-span-1": "Одна локация",
     "price-description-1-span-2": "120 цветных фото",
     "price-description-1-span-3": "12 отретушированных фото",
@@ -243,6 +242,32 @@ function toggleActiveBtn(event) {
 langEn.addEventListener("click", () => getTranslate("en"));
 langRu.addEventListener("click", () => getTranslate("ru"));
 langBtns.forEach((el) => el.addEventListener("click", toggleActiveBtn));
+
+// Choose price
+const priceBtns = document.querySelectorAll(".btn--border");
+let priceBtnStorage = sessionStorage.getItem("priceBtn");
+
+if (priceBtnStorage) {
+  priceBtns.forEach((el) => {
+    if (
+      el.parentNode.querySelector(".price__title").textContent ===
+      priceBtnStorage
+    ) {
+      el.classList.add("active");
+    }
+  });
+}
+
+function choosePrice(event) {
+  priceBtns.forEach((el) => el.classList.remove("active"));
+  event.target.classList.add("active");
+  sessionStorage.setItem(
+    "priceBtn",
+    event.target.parentNode.querySelector(".price__title").textContent
+  );
+}
+
+priceBtns.forEach((el) => el.addEventListener("click", choosePrice));
 
 // Auto change now year
 const nowYear = new Date().getFullYear();

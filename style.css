@@ -79,6 +79,22 @@ ul {
     background-color: #1c1c1c;
 }
 
+.btn--border {
+    background-color: inherit;
+    border: 2px solid #BDAE82;
+    color: #BDAE82;
+}
+
+.btn--border:hover {
+    background-color: #BDAE82;
+    color: #000;
+}
+
+.btn--border.active {
+    background-color: #BDAE82;
+    color: #000;
+}
+
 .btn--border.light-theme {
     border: 2px solid #BDAE82;
 }
