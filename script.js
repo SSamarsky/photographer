@@ -17,9 +17,37 @@ burger.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 navLinks.forEach((el) => el.addEventListener("click", toggleMenu));
 
+
+// Image caching
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+
+function preloadImages() {
+    seasons.forEach((season, index) => {
+        for(let i = 1; i <= 6; i++) {
+            const img = new Image();
+            img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
+          }
+    });
+  }
+
+preloadImages();
+
 // Change Images
 const buttons = document.querySelectorAll(".buttons__item");
 const images = document.querySelectorAll(".portfolio__photo");
+
+let seasonImgStorage = sessionStorage.getItem("btnImg");
+if (seasonImgStorage) {
+  document.querySelector(".buttons .active").classList.remove("active");
+  buttons.forEach((el) => {
+    if (el.dataset.season === seasonImgStorage) {
+      el.classList.add("active");
+    }
+  });
+  images.forEach((el, index) => {
+    el.src = `./assets/images/${seasonImgStorage}/${index + 1}.jpg`;
+  });
+}
 
 function changeImages(event) {
   images.forEach((img, index) => {
@@ -27,6 +55,7 @@ function changeImages(event) {
   });
   document.querySelector(".buttons .active").classList.remove("active");
   event.target.classList.add("active");
+  sessionStorage.setItem("btnImg", event.target.dataset.season);
 }
 
 buttons.forEach((el) => el.addEventListener("click", changeImages));
@@ -52,7 +81,7 @@ const arrClassesSwitchTheme = document.querySelectorAll([
   ".burger__line",
 ]);
 
-const theme = sessionStorage.getItem("theme");
+let theme = sessionStorage.getItem("theme");
 if (theme) {
   switchTheme.classList.toggle(theme);
   arrClassesSwitchTheme.forEach((el) => el.classList.toggle(theme));
@@ -177,7 +206,7 @@ const langEn = document.querySelector(".en");
 const langRu = document.querySelector(".ru");
 const dataAttributes = document.querySelectorAll("[data-lang]");
 
-const langSession = sessionStorage.getItem("lang");
+let langSession = sessionStorage.getItem("lang");
 if (langSession) {
   dataAttributes.forEach((el) => {
     if (el.placeholder) {
