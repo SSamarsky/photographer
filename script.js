@@ -17,9 +17,37 @@ burger.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 navLinks.forEach((el) => el.addEventListener("click", toggleMenu));
 
+
+// Image caching
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+
+function preloadImages() {
+    seasons.forEach((season, index) => {
+        for(let i = 1; i <= 6; i++) {
+            const img = new Image();
+            img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
+          }
+    });
+  }
+
+preloadImages();
+
 // Change Images
 const buttons = document.querySelectorAll(".buttons__item");
 const images = document.querySelectorAll(".portfolio__photo");
+
+let seasonImgStorage = sessionStorage.getItem("btnImg");
+if (seasonImgStorage) {
+  document.querySelector(".buttons .active").classList.remove("active");
+  buttons.forEach((el) => {
+    if (el.dataset.season === seasonImgStorage) {
+      el.classList.add("active");
+    }
+  });
+  images.forEach((el, index) => {
+    el.src = `./assets/images/${seasonImgStorage}/${index + 1}.jpg`;
+  });
+}
 
 function changeImages(event) {
   images.forEach((img, index) => {
@@ -27,11 +55,12 @@ function changeImages(event) {
   });
   document.querySelector(".buttons .active").classList.remove("active");
   event.target.classList.add("active");
+  sessionStorage.setItem("btnImg", event.target.dataset.season);
 }
 
 buttons.forEach((el) => el.addEventListener("click", changeImages));
 
-// Change Themes
+// Switch Themes
 const switchTheme = document.querySelector(".theme");
 const arrClassesSwitchTheme = document.querySelectorAll([
   ".body",
@@ -52,9 +81,20 @@ const arrClassesSwitchTheme = document.querySelectorAll([
   ".burger__line",
 ]);
 
+let theme = sessionStorage.getItem("theme");
+if (theme) {
+  switchTheme.classList.toggle(theme);
+  arrClassesSwitchTheme.forEach((el) => el.classList.toggle(theme));
+}
+
 function changeTheme() {
   switchTheme.classList.toggle("light-theme");
   arrClassesSwitchTheme.forEach((el) => el.classList.toggle("light-theme"));
+  if (sessionStorage.getItem("theme") === "light-theme") {
+    sessionStorage.removeItem("theme");
+  } else {
+    sessionStorage.setItem("theme", "light-theme");
+  }
 }
 
 switchTheme.addEventListener("click", changeTheme);
@@ -166,7 +206,25 @@ const langEn = document.querySelector(".en");
 const langRu = document.querySelector(".ru");
 const dataAttributes = document.querySelectorAll("[data-lang]");
 
+let langSession = sessionStorage.getItem("lang");
+if (langSession) {
+  dataAttributes.forEach((el) => {
+    if (el.placeholder) {
+      el.placeholder = languages[langSession][el.dataset.lang];
+    }
+    el.textContent = languages[langSession][el.dataset.lang];
+  });
+
+  langBtns.forEach((el) => {
+    el.classList.remove("active");
+    if (el.classList.contains(langSession)) {
+      el.classList.add("active");
+    }
+  });
+}
+
 function getTranslate(lang) {
+  sessionStorage.setItem("lang", lang);
   dataAttributes.forEach((el) => {
     if (el.placeholder) {
       el.placeholder = languages[lang][el.dataset.lang];
@@ -185,3 +243,7 @@ function toggleActiveBtn(event) {
 langEn.addEventListener("click", () => getTranslate("en"));
 langRu.addEventListener("click", () => getTranslate("ru"));
 langBtns.forEach((el) => el.addEventListener("click", toggleActiveBtn));
+
+// Auto change now year
+const nowYear = new Date().getFullYear();
+document.querySelector("#year").textContent = nowYear;

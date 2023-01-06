@@ -83,6 +83,14 @@ ul {
     border: 2px solid #BDAE82;
 }
 
+.btn__link {
+    text-align: center;
+    display: block;
+    width: 220px;
+    height: 55px;
+    line-height: 55px;
+}
+
 /* ----- Header ----- */
 
 .header {
@@ -253,14 +261,14 @@ ul {
 .intro {
     margin: 0 auto;
     height: 910px;
-    background-image: url("assets/images/backgrounds/intro-bg.jpg");
+    background-image: url("./assets/images/backgrounds/intro-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .intro.light-theme {
-    background-image: url("assets/images/backgrounds/intro-bg-light.jpg");
+    background-image: url("./assets/images/backgrounds/intro-bg-light.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -377,7 +385,7 @@ ul {
     margin: 0 auto;
     position: relative;
     width: 100%;
-    background-image: url('assets/images/backgrounds/video-bg.jpg');
+    background-image: url('./assets/images/backgrounds/video-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -447,14 +455,14 @@ ul {
 .contact {
     margin: 0 auto;
     height: 700px;
-    background-image: url("assets/images/backgrounds/contact-bg.jpg");
+    background-image: url("./assets/images/backgrounds/contact-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .contact.light-theme {
-    background-image: url("assets/images/backgrounds/contact-bg-light.jpg");
+    background-image: url("./assets/images/backgrounds/contact-bg-light.jpg");
 }
 
 .contact__inner {
