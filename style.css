@@ -79,6 +79,22 @@ ul {
     background-color: #1c1c1c;
 }
 
+.btn--border {
+    background-color: inherit;
+    border: 2px solid #BDAE82;
+    color: #BDAE82;
+}
+
+.btn--border:hover {
+    background-color: #BDAE82;
+    color: #000;
+}
+
+.btn--border.active {
+    background-color: #BDAE82;
+    color: #000;
+}
+
 .btn--border.light-theme {
     border: 2px solid #BDAE82;
 }
@@ -381,13 +397,284 @@ ul {
 }
 
 .video {
-    padding-top: 50.4%;
-    margin: 0 auto;
     position: relative;
+    margin: 0 auto;
     width: 100%;
-    background-image: url('./assets/images/backgrounds/video-bg.jpg');
+    text-align: center;
+    overflow: hidden;
+    background-color: #000;
+    max-height: 705px;
+}
+
+.video__player {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.controls__info {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.video__progress {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 15px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #fff;
+    height: 15px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #BDAE82;
+    height: 15px;
+}
+
+#progress-current {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    color: #BDAE82;
+    font-size: 18px;
+    user-select: none;
+    pointer-events: none;
+}
+
+#progress-current.active {
+    color: #fff;
+}
+
+.video__controls {
+    margin: 0 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel__controls {
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    position: absolute;
+    bottom: 5px;
+    transition: all .3s ease-in-out;
+}
+
+.panel__controls.active {
+    display: block;
+}
+
+.controls__btns {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.btn__control {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    transition: all .2s ease-in-out;
+}
+
+#play-pause {
+    background-image: url("./assets/images/icons/video-player/play.svg");
+}
+
+#play-pause:hover {
+    background-image: url("./assets/images/icons/video-player/play-hover.svg");
+}
+
+#play-pause.active {
+    background-image: url("./assets/images/icons/video-player/pause.svg");
+}
+
+#play-pause.active:hover {
+    background-image: url("./assets/images/icons/video-player/pause-hover.svg");
+}
+
+#stop {
+    background-image: url("./assets/images/icons/video-player/stop.svg");
+}
+
+#stop:hover {
+    background-image: url("./assets/images/icons/video-player/stop-hover.svg");
+}
+
+#speed-down {
+    background-image: url("./assets/images/icons/video-player/backward-fast.svg");
+}
+
+#speed-down:hover {
+    background-image: url("./assets/images/icons/video-player/backward-fast-hover.svg");
+}
+
+#speed-up {
+    background-image: url("./assets/images/icons/video-player/forward-fast.svg");
+}
+
+#speed-up:hover {
+    background-image: url("./assets/images/icons/video-player/forward-fast-hover.svg");
+}
+
+#back {
+    background-image: url("./assets/images/icons/video-player/backward-step.svg");
+}
+
+#back:hover {
+    background-image: url("./assets/images/icons/video-player/backward-step-hover.svg");
+}
+
+#next {
+    background-image: url("./assets/images/icons/video-player/forward-step.svg");
+}
+
+#next:hover {
+    background-image: url("./assets/images/icons/video-player/forward-step-hover.svg");
+}
+
+#volume-btn {
+    background-image: url("./assets/images/icons/video-player/volume.svg");
+}
+
+#volume-btn:hover {
+    background-image: url("./assets/images/icons/video-player/volume-hover.svg");
+}
+
+#volume-btn.active {
+    background-image: url("./assets/images/icons/video-player/volume-off.svg");
+}
+
+#volume-btn.active:hover {
+    background-image: url("./assets/images/icons/video-player/volume-off-hover.svg");
+}
+
+#playlistBtn {
+    position: absolute;
+    z-index: 100000;
+    right: 5px;
+    background-image: url("./assets/images/icons/video-player/playlist.svg");
+}
+
+#playlistBtn:hover {
+    background-image: url("./assets/images/icons/video-player/playlist-hover.svg");
+}
+
+#speed-video {
+    font-size: 18px;
+    color: #fff;
+}
+
+.playlist {
+    position: absolute;
+    right: -500px;
+    bottom: 0;
+    z-index: 1000;
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, .7);
+    transition: all .3s ease-in-out;
+}
+
+.playlist__title {
+    padding-top: 40px;
+    font-size: 34px;
+    color: #fff;
+}
+
+.playlist__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.playlist__item {
+    padding: 2px;
+    margin: 20px 0;
+    font-size: 24px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+}
+
+.playlist__item.active {
+    color: #BDAE82;
+}
+
+.playlist__item:hover {
+    color: #BDAE82;
+}
+
+.playlist.active {
+    right: 0;
+}
+
+.volume__box {
+    margin: 0 10px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+#volume[type=range] {
+    width: 100px;
+    height: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #BDAE82;
+}
+
+#volume[type=range]::-webkit-slider-runnable-track {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#volume[type=range]::-webkit-slider-thumb {
+    border-radius: 50%;
+    background: #BDAE82;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin-top: -3px;
+    -webkit-appearance: none;
+}
+
+#volume[type=range]::-moz-range-track {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#volume[type=range]::-moz-range-thumb {
+    border-radius: 50%;
+    background: #BDAE82;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin-top: -3px;
+}
+
+.controls__btn {
+    cursor: pointer;
 }
 
 .video__btn {
@@ -397,6 +684,11 @@ ul {
     transform: translate(-50%, -50%);
     border: none;
     background-color: transparent;
+    z-index: 1000;
+}
+
+.video__btn.active {
+    display: none;
 }
 
 .video__icon {

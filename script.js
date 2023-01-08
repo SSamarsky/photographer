@@ -17,18 +17,17 @@ burger.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 navLinks.forEach((el) => el.addEventListener("click", toggleMenu));
 
-
 // Image caching
-const seasons = ['winter', 'spring', 'summer', 'autumn'];
+const seasons = ["winter", "spring", "summer", "autumn"];
 
 function preloadImages() {
-    seasons.forEach((season, index) => {
-        for(let i = 1; i <= 6; i++) {
-            const img = new Image();
-            img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
-          }
-    });
-  }
+  seasons.forEach((season, index) => {
+    for (let i = 1; i <= 6; i++) {
+      const img = new Image();
+      img.src = `./assets/images/${seasons[index]}/${i}.jpg`;
+    }
+  });
+}
 
 preloadImages();
 
@@ -176,7 +175,7 @@ const languages = {
     autumn: "Осень",
     "price-title-1": "Стандарт",
     "price-title-2": "Премиум",
-    "price-title-3    ": "Золото",
+    "price-title-3": "Золото",
     "price-description-1-span-1": "Одна локация",
     "price-description-1-span-2": "120 цветных фото",
     "price-description-1-span-3": "12 отретушированных фото",
@@ -244,6 +243,242 @@ langEn.addEventListener("click", () => getTranslate("en"));
 langRu.addEventListener("click", () => getTranslate("ru"));
 langBtns.forEach((el) => el.addEventListener("click", toggleActiveBtn));
 
+// Choose price
+const priceBtns = document.querySelectorAll(".btn--border");
+let priceBtnStorage = sessionStorage.getItem("priceBtn");
+
+if (priceBtnStorage) {
+  priceBtns.forEach((el) => {
+    if (
+      el.parentNode.querySelector(".price__title").textContent ===
+      priceBtnStorage
+    ) {
+      el.classList.add("active");
+    }
+  });
+}
+
+function choosePrice(event) {
+  priceBtns.forEach((el) => el.classList.remove("active"));
+  event.target.classList.add("active");
+  sessionStorage.setItem(
+    "priceBtn",
+    event.target.parentNode.querySelector(".price__title").textContent
+  );
+}
+
+priceBtns.forEach((el) => el.addEventListener("click", choosePrice));
+
 // Auto change now year
 const nowYear = new Date().getFullYear();
 document.querySelector("#year").textContent = nowYear;
+
+// Video-Player
+const video = document.querySelector("#video-player");
+const playPauseBtn = document.querySelector("#play-pause");
+const mainPlayPauseBtn = document.querySelector(".video__btn");
+const stopBtn = document.querySelector("#stop");
+const speedUpBtn = document.querySelector("#speed-up");
+const speedDownBtn = document.querySelector("#speed-down");
+const volume = document.querySelector("#volume");
+const volumeBtn = document.querySelector("#volume-btn");
+const speedVideo = document.querySelector("#speed-video");
+const progressBar = document.querySelector("#progress");
+const nextBtn = document.querySelector("#next");
+const backBtn = document.querySelector("#back");
+const panel = document.querySelector("#panel");
+
+if (sessionStorage.getItem("volume")) {
+  video.volume = sessionStorage.getItem("volume");
+  volume.value = sessionStorage.getItem("volume") * 100;
+}
+const totalCountVidio = 3;
+let nowVideo = 1;
+
+function backVideo() {
+  stopVideo();
+  nowVideo--;
+  if (nowVideo <= 0) {
+    nowVideo = totalCountVidio;
+  }
+  video.src = `./assets/videos/${nowVideo}.mp4`;
+  video.play();
+  playPauseBtn.classList.add("active");
+  mainPlayPauseBtn.classList.add("active");
+  progressCurrent.classList.remove("active");
+}
+function nextVideo() {
+  stopVideo();
+  nowVideo++;
+  if (nowVideo > totalCountVidio) {
+    nowVideo = 1;
+  }
+  video.src = `./assets/videos/${nowVideo}.mp4`;
+  video.play();
+  playPauseBtn.classList.add("active");
+  mainPlayPauseBtn.classList.add("active");
+  progressCurrent.classList.remove("active");
+}
+
+function playVideo() {
+  video.play();
+  panel.classList.add("active");
+}
+function pauseVideo() {
+  video.pause();
+}
+function stopVideo() {
+  video.pause();
+  video.currentTime = 0;
+  video.playbackRate = 1;
+  speedVideo.textContent = "x" + video.playbackRate;
+  playPauseBtn.classList.remove("active");
+  mainPlayPauseBtn.classList.remove("active");
+  progressCurrent.classList.remove("active");
+}
+
+function offVolumeVideo() {
+  sessionStorage.setItem("value", video.volume);
+  video.volume = 0;
+  volume.value = 0;
+  volumeBtn.classList.add("active");
+}
+
+function onVolumeVideo() {
+  video.volume = sessionStorage.getItem("volume");
+  volume.value = sessionStorage.getItem("volume") * 100;
+  volumeBtn.classList.remove("active");
+}
+
+function volumeVideo() {
+  let v = this.value;
+  video.volume = v / 100;
+  sessionStorage.setItem("volume", video.volume);
+}
+
+function onClickVolumeBtn() {
+  if (volumeBtn.classList.contains("active")) {
+    onVolumeVideo();
+  } else {
+    offVolumeVideo();
+  }
+}
+
+function speedUpVideo() {
+  playPauseBtn.classList.add("active");
+  mainPlayPauseBtn.classList.add("active");
+  video.play();
+  if (video.playbackRate <= 1) {
+    video.playbackRate = 1.25;
+  } else if (video.playbackRate == 1.25) {
+    video.playbackRate = 1.5;
+  } else if (video.playbackRate == 1.5) {
+    video.playbackRate = 1.8;
+  } else if (video.playbackRate == 1.8) {
+    video.playbackRate = 2;
+  } else {
+    video.playbackRate = 1;
+  }
+  speedVideo.textContent = "x" + video.playbackRate;
+}
+
+function speedDownVideo() {
+  playPauseBtn.classList.add("active");
+  mainPlayPauseBtn.classList.add("active");
+  video.play();
+  if (video.playbackRate >= 1) {
+    video.playbackRate = 0.75;
+  } else if (video.playbackRate == 0.75) {
+    video.playbackRate = 0.5;
+  } else if (video.playbackRate == 0.5) {
+    video.playbackRate = 0.25;
+  } else {
+    video.playbackRate = 1;
+  }
+  speedVideo.textContent = "x" + video.playbackRate;
+}
+
+function onClickPlayPause() {
+  playPauseBtn.classList.toggle("active");
+  mainPlayPauseBtn.classList.toggle("active");
+  if (playPauseBtn.classList.contains("active")) {
+    playVideo();
+  } else {
+    video.pause();
+  }
+  video.playbackRate = 1;
+  speedVideo.textContent = "x" + video.playbackRate;
+}
+
+const progressCurrent = document.querySelector("#progress-current");
+
+function progressUpdate() {
+  const d = video.duration;
+  let c = video.currentTime;
+  progressBar.value = (100 * c) / d;
+  progressCurrent.textContent = Math.round(progress.value) + "%";
+  if (progressBar.value >= 51) {
+    progressCurrent.classList.add("active");
+  }
+}
+
+function rewindVideo() {
+  playPauseBtn.classList.add("active");
+  mainPlayPauseBtn.classList.add("active");
+  let w = this.offsetWidth;
+  let p = event.offsetX;
+  this.value = (100 * p) / w;
+  video.pause();
+  video.currentTime = (video.duration * p) / w;
+  video.play();
+}
+
+playPauseBtn.addEventListener("click", onClickPlayPause);
+mainPlayPauseBtn.addEventListener("click", onClickPlayPause);
+stopBtn.addEventListener("click", stopVideo);
+speedUpBtn.addEventListener("click", speedUpVideo);
+speedDownBtn.addEventListener("click", speedDownVideo);
+volume.addEventListener("input", volumeVideo);
+volumeBtn.addEventListener("click", onClickVolumeBtn);
+video.addEventListener("timeupdate", progressUpdate);
+progressBar.addEventListener("click", rewindVideo);
+nextBtn.addEventListener("click", nextVideo);
+backBtn.addEventListener("click", backVideo);
+
+function visiblePanel() {
+  panel.classList.add("active");
+}
+function hiddenPanel() {
+  panel.classList.remove("active");
+}
+
+const videoBlock = document.querySelector(".video");
+videoBlock.addEventListener("mouseover", visiblePanel);
+videoBlock.addEventListener("mouseout", hiddenPanel);
+video.addEventListener("click", onClickPlayPause);
+
+const playlisBtn = document.querySelector("#playlistBtn");
+const playlist = document.querySelector("#playlist");
+
+function activePlaylist() {
+  playlist.classList.toggle("active");
+}
+
+playlisBtn.addEventListener("click", activePlaylist);
+
+const video1 = document.querySelector("#video-1");
+const video2 = document.querySelector("#video-2");
+const video3 = document.querySelector("#video-3");
+
+const videoFiles = document.querySelectorAll(".playlist__item");
+
+function chooseVideo(event) {
+  stopVideo();
+  videoFiles.forEach((el) => el.classList.remove("active"));
+  event.target.classList.add("active");
+  const file = event.target.dataset.video;
+  video.src = `./assets/videos/${file}.mp4`;
+  onClickPlayPause();
+}
+
+videoFiles.forEach((el) => el.addEventListener("click", chooseVideo));
