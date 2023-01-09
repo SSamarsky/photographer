@@ -276,7 +276,7 @@ document.querySelector("#year").textContent = nowYear;
 // Video-Player
 const video = document.querySelector("#video-player");
 const playPauseBtn = document.querySelector("#play-pause");
-const mainPlayPauseBtn = document.querySelector(".video__btn");
+const mainPlayPauseBtn = document.querySelector("#main-play-pause");
 const stopBtn = document.querySelector("#stop");
 const speedUpBtn = document.querySelector("#speed-up");
 const speedDownBtn = document.querySelector("#speed-down");
@@ -478,7 +478,7 @@ function chooseVideo(event) {
   event.target.classList.add("active");
   const file = event.target.dataset.video;
   video.src = `./assets/videos/${file}.mp4`;
-  onClickPlayPause();
+  onClickPlayPause(); 
 }
 
 videoFiles.forEach((el) => el.addEventListener("click", chooseVideo));
