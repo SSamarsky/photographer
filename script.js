@@ -275,25 +275,52 @@ document.querySelector("#year").textContent = nowYear;
 
 // Video-Player
 const video = document.querySelector("#video-player");
+const platBtn = document.querySelector("#main-play-pause");
 const playPauseBtn = document.querySelector("#play-pause");
-const mainPlayPauseBtn = document.querySelector("#main-play-pause");
 const stopBtn = document.querySelector("#stop");
 const speedUpBtn = document.querySelector("#speed-up");
 const speedDownBtn = document.querySelector("#speed-down");
 const volume = document.querySelector("#volume");
 const volumeBtn = document.querySelector("#volume-btn");
-const speedVideo = document.querySelector("#speed-video");
+const infoSpeed = document.querySelector("#info-speed");
 const progressBar = document.querySelector("#progress");
 const nextBtn = document.querySelector("#next");
 const backBtn = document.querySelector("#back");
 const panel = document.querySelector("#panel");
+const infoProgress = document.querySelector("#info-progress");
+const videoBlock = document.querySelector(".video");
+const playlisBtn = document.querySelector("#playlistBtn");
+const playlist = document.querySelector("#playlist");
+
+const totalCountVidio = 3;
+let nowVideo = 1;
 
 if (sessionStorage.getItem("volume")) {
   video.volume = sessionStorage.getItem("volume");
   volume.value = sessionStorage.getItem("volume") * 100;
 }
-const totalCountVidio = 3;
-let nowVideo = 1;
+
+function onClickPlayPause() {
+  playPauseBtn.classList.toggle("active");
+  platBtn.classList.toggle("active");
+  if (playPauseBtn.classList.contains("active")) {
+    video.play()();
+  } else {
+    video.pause();
+  }
+  video.playbackRate = 1;
+  infoSpeed.textContent = "x" + video.playbackRate;
+}
+
+function stopVideo() {
+  video.pause();
+  video.playbackRate = 1;
+  infoSpeed.textContent = "x" + video.playbackRate;
+  playPauseBtn.classList.remove("active");
+  platBtn.classList.remove("active");
+  infoProgress.classList.remove("active");
+  video.currentTime = 0;
+}
 
 function backVideo() {
   stopVideo();
@@ -304,9 +331,10 @@ function backVideo() {
   video.src = `./assets/videos/${nowVideo}.mp4`;
   video.play();
   playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  progressCurrent.classList.remove("active");
+  platBtn.classList.add("active");
+  infoProgress.classList.remove("active");
 }
+
 function nextVideo() {
   stopVideo();
   nowVideo++;
@@ -316,25 +344,14 @@ function nextVideo() {
   video.src = `./assets/videos/${nowVideo}.mp4`;
   video.play();
   playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  progressCurrent.classList.remove("active");
+  platBtn.classList.add("active");
+  infoProgress.classList.remove("active");
 }
 
-function playVideo() {
-  video.play();
-  panel.classList.add("active");
-}
-function pauseVideo() {
-  video.pause();
-}
-function stopVideo() {
-  video.pause();
-  video.currentTime = 0;
-  video.playbackRate = 1;
-  speedVideo.textContent = "x" + video.playbackRate;
-  playPauseBtn.classList.remove("active");
-  mainPlayPauseBtn.classList.remove("active");
-  progressCurrent.classList.remove("active");
+function volumeVideo() {
+  let v = this.value;
+  video.volume = v / 100;
+  sessionStorage.setItem("volume", video.volume);
 }
 
 function offVolumeVideo() {
@@ -350,12 +367,6 @@ function onVolumeVideo() {
   volumeBtn.classList.remove("active");
 }
 
-function volumeVideo() {
-  let v = this.value;
-  video.volume = v / 100;
-  sessionStorage.setItem("volume", video.volume);
-}
-
 function onClickVolumeBtn() {
   if (volumeBtn.classList.contains("active")) {
     onVolumeVideo();
@@ -366,7 +377,7 @@ function onClickVolumeBtn() {
 
 function speedUpVideo() {
   playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
+  platBtn.classList.add("active");
   video.play();
   if (video.playbackRate <= 1) {
     video.playbackRate = 1.25;
@@ -379,12 +390,12 @@ function speedUpVideo() {
   } else {
     video.playbackRate = 1;
   }
-  speedVideo.textContent = "x" + video.playbackRate;
+  infoSpeed.textContent = "x" + video.playbackRate;
 }
 
 function speedDownVideo() {
   playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
+  platBtn.classList.add("active");
   video.play();
   if (video.playbackRate >= 1) {
     video.playbackRate = 0.75;
@@ -395,36 +406,22 @@ function speedDownVideo() {
   } else {
     video.playbackRate = 1;
   }
-  speedVideo.textContent = "x" + video.playbackRate;
+  infoSpeed.textContent = "x" + video.playbackRate;
 }
-
-function onClickPlayPause() {
-  playPauseBtn.classList.toggle("active");
-  mainPlayPauseBtn.classList.toggle("active");
-  if (playPauseBtn.classList.contains("active")) {
-    playVideo();
-  } else {
-    video.pause();
-  }
-  video.playbackRate = 1;
-  speedVideo.textContent = "x" + video.playbackRate;
-}
-
-const progressCurrent = document.querySelector("#progress-current");
 
 function progressUpdate() {
   const d = video.duration;
   let c = video.currentTime;
   progressBar.value = (100 * c) / d;
-  progressCurrent.textContent = Math.round(progress.value) + "%";
+  infoProgress.textContent = Math.round(progress.value) + "%";
   if (progressBar.value >= 51) {
-    progressCurrent.classList.add("active");
+    infoProgress.classList.add("active");
   }
 }
 
 function rewindVideo() {
   playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
+  platBtn.classList.add("active");
   let w = this.offsetWidth;
   let p = event.offsetX;
   this.value = (100 * p) / w;
@@ -433,8 +430,20 @@ function rewindVideo() {
   video.play();
 }
 
+function visiblePanel() {
+  panel.classList.add("active");
+}
+
+function hiddenPanel() {
+  panel.classList.remove("active");
+}
+
+function activePlaylist() {
+  playlist.classList.toggle("active");
+}
+
 playPauseBtn.addEventListener("click", onClickPlayPause);
-mainPlayPauseBtn.addEventListener("click", onClickPlayPause);
+platBtn.addEventListener("click", onClickPlayPause);
 stopBtn.addEventListener("click", stopVideo);
 speedUpBtn.addEventListener("click", speedUpVideo);
 speedDownBtn.addEventListener("click", speedDownVideo);
@@ -444,32 +453,14 @@ video.addEventListener("timeupdate", progressUpdate);
 progressBar.addEventListener("click", rewindVideo);
 nextBtn.addEventListener("click", nextVideo);
 backBtn.addEventListener("click", backVideo);
-
-function visiblePanel() {
-  panel.classList.add("active");
-}
-function hiddenPanel() {
-  panel.classList.remove("active");
-}
-
-const videoBlock = document.querySelector(".video");
 videoBlock.addEventListener("mouseover", visiblePanel);
 videoBlock.addEventListener("mouseout", hiddenPanel);
 video.addEventListener("click", onClickPlayPause);
-
-const playlisBtn = document.querySelector("#playlistBtn");
-const playlist = document.querySelector("#playlist");
-
-function activePlaylist() {
-  playlist.classList.toggle("active");
-}
-
 playlisBtn.addEventListener("click", activePlaylist);
 
 const video1 = document.querySelector("#video-1");
 const video2 = document.querySelector("#video-2");
 const video3 = document.querySelector("#video-3");
-
 const videoFiles = document.querySelectorAll(".playlist__item");
 
 function chooseVideo(event) {
@@ -478,7 +469,7 @@ function chooseVideo(event) {
   event.target.classList.add("active");
   const file = event.target.dataset.video;
   video.src = `./assets/videos/${file}.mp4`;
-  onClickPlayPause(); 
+  onClickPlayPause();
 }
 
 videoFiles.forEach((el) => el.addEventListener("click", chooseVideo));
