@@ -213,19 +213,19 @@ ul {
 .theme {
     width: 45px;
     height: 45px;
-    background-image: url('./assets/images/icons/themeDark.svg');
+    background-image: url('./assets/icons/themeDark.svg');
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
 
 .theme:hover {
-    background-image: url('./assets/images/icons/themeDark-hover.svg');
+    background-image: url('./assets/icons/themeDark-hover.svg');
 }
 
 .theme.light-theme {
     width: 40px;
     height: 40px;
-    background-image: url('./assets/images/icons/themeLight.svg');
+    background-image: url('./assets/icons/themeLight.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -233,7 +233,7 @@ ul {
 }
 
 .theme.light-theme:hover {
-    background-image: url('./assets/images/icons/themeLight-hover.svg');
+    background-image: url('./assets/icons/themeLight-hover.svg');
 }
 
 .burger {
@@ -473,7 +473,7 @@ ul {
 
 .progress__text {
     position: absolute;
-    top: 5px;
+    top: 0;
     left: 50%;
     color: #BDAE82;
     font-size: 18px;
@@ -526,86 +526,86 @@ ul {
 }
 
 #play-pause {
-    background-image: url("./assets/images/icons/video-player/play.svg");
+    background-image: url("./assets/icons/video-player/play.svg");
 }
 
 #play-pause:hover {
-    background-image: url("./assets/images/icons/video-player/play-hover.svg");
+    background-image: url("./assets/icons/video-player/play-hover.svg");
 }
 
 #play-pause.active {
-    background-image: url("./assets/images/icons/video-player/pause.svg");
+    background-image: url("./assets/icons/video-player/pause.svg");
 }
 
 #play-pause.active:hover {
-    background-image: url("./assets/images/icons/video-player/pause-hover.svg");
+    background-image: url("./assets/icons/video-player/pause-hover.svg");
 }
 
 #stop {
-    background-image: url("./assets/images/icons/video-player/stop.svg");
+    background-image: url("./assets/icons/video-player/stop.svg");
 }
 
 #stop:hover {
-    background-image: url("./assets/images/icons/video-player/stop-hover.svg");
+    background-image: url("./assets/icons/video-player/stop-hover.svg");
 }
 
 #speed-down {
-    background-image: url("./assets/images/icons/video-player/backward-fast.svg");
+    background-image: url("./assets/icons/video-player/backward-fast.svg");
 }
 
 #speed-down:hover {
-    background-image: url("./assets/images/icons/video-player/backward-fast-hover.svg");
+    background-image: url("./assets/icons/video-player/backward-fast-hover.svg");
 }
 
 #speed-up {
-    background-image: url("./assets/images/icons/video-player/forward-fast.svg");
+    background-image: url("./assets/icons/video-player/forward-fast.svg");
 }
 
 #speed-up:hover {
-    background-image: url("./assets/images/icons/video-player/forward-fast-hover.svg");
+    background-image: url("./assets/icons/video-player/forward-fast-hover.svg");
 }
 
 #back {
-    background-image: url("./assets/images/icons/video-player/backward-step.svg");
+    background-image: url("./assets/icons/video-player/backward-step.svg");
 }
 
 #back:hover {
-    background-image: url("./assets/images/icons/video-player/backward-step-hover.svg");
+    background-image: url("./assets/icons/video-player/backward-step-hover.svg");
 }
 
 #next {
-    background-image: url("./assets/images/icons/video-player/forward-step.svg");
+    background-image: url("./assets/icons/video-player/forward-step.svg");
 }
 
 #next:hover {
-    background-image: url("./assets/images/icons/video-player/forward-step-hover.svg");
+    background-image: url("./assets/icons/video-player/forward-step-hover.svg");
 }
 
 #volume-btn {
-    background-image: url("./assets/images/icons/video-player/volume.svg");
+    background-image: url("./assets/icons/video-player/volume.svg");
 }
 
 #volume-btn:hover {
-    background-image: url("./assets/images/icons/video-player/volume-hover.svg");
+    background-image: url("./assets/icons/video-player/volume-hover.svg");
 }
 
 #volume-btn.active {
-    background-image: url("./assets/images/icons/video-player/volume-off.svg");
+    background-image: url("./assets/icons/video-player/volume-off.svg");
 }
 
 #volume-btn.active:hover {
-    background-image: url("./assets/images/icons/video-player/volume-off-hover.svg");
+    background-image: url("./assets/icons/video-player/volume-off-hover.svg");
 }
 
 #playlistBtn {
     position: absolute;
     z-index: 100000;
     right: 5px;
-    background-image: url("./assets/images/icons/video-player/playlist.svg");
+    background-image: url("./assets/icons/video-player/playlist.svg");
 }
 
 #playlistBtn:hover {
-    background-image: url("./assets/images/icons/video-player/playlist-hover.svg");
+    background-image: url("./assets/icons/video-player/playlist-hover.svg");
 }
 
 #volume[type=range] {
@@ -772,9 +772,30 @@ ul {
     color: #1c1c1c;
 }
 
+.error {
+    height: 20px;
+    display: flex;
+}
+
+.error--mb {
+    margin-bottom: 10px;
+}
+
+.error__text {
+    display: none;
+    padding-left: 20px;
+    text-align: center;
+    height: 100%;
+    font-size: 16px;
+    color: red;
+}
+
+.error__text.active {
+    display: block;
+}
+
 .input {
     padding-left: 20px;
-    margin-bottom: 20px;
     width: 100%;
     height: 50px;
     background-color: rgba(0, 0, 0, .5);
@@ -807,7 +828,6 @@ input:-webkit-autofill:active {
 
 .textarea {
     padding-top: 10px;
-    margin-bottom: 25px;
     height: 100px;
     resize: none;
     width: 100%;
@@ -1147,7 +1167,7 @@ input:-webkit-autofill:active {
 
     .progress__text {
         font-size: 14px;
-        top: 7px;
+        top: 2px;
     }
 
     .contact {
@@ -1332,6 +1352,6 @@ input:-webkit-autofill:active {
 
     .progress__text {
         font-size: 12px;
-        top: 5px;
+        top: 1px;
     }
 }
