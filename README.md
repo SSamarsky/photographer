@@ -1,6 +1,6 @@
 # Photographer's portfolio
 
-1. This project is a simple <code>[landing page](https://ssamarsky.github.io/photographer/index.html)</code> that I made in a course of <code>[JavaScript/Front-end. Stage 0](https://rs.school/js-stage0/)</code>
+1. This project is a simple <code>[landing page](https://ssamarsky.github.io/photographer/index.html)</code> that I made in a course of <code>[JavaScript/Front-end. Stage 0](https://rs.school/js-stage0/)</code> in 2022
 2. The project was made according to the <code>[Figma layout](https://www.figma.com/file/1A1SJ7FYyMUiBqhU3WUiBI/Portfolio?t=c6UXxMjmthsqtp5u-0)</code>
 3. Used: HTML, CSS and vanilla JavaScript
     - HTML: semantic and validation (<code>[W3C](https://validator.w3.org/#validate_by_uri)</code>)
