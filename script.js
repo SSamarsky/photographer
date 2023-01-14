@@ -273,212 +273,49 @@ priceBtns.forEach((el) => el.addEventListener("click", choosePrice));
 const nowYear = new Date().getFullYear();
 document.querySelector("#year").textContent = nowYear;
 
-// Video-Player
-const video = document.querySelector("#video-player");
-const playPauseBtn = document.querySelector("#play-pause");
-const mainPlayPauseBtn = document.querySelector(".video__btn");
-const stopBtn = document.querySelector("#stop");
-const speedUpBtn = document.querySelector("#speed-up");
-const speedDownBtn = document.querySelector("#speed-down");
-const volume = document.querySelector("#volume");
-const volumeBtn = document.querySelector("#volume-btn");
-const speedVideo = document.querySelector("#speed-video");
-const progressBar = document.querySelector("#progress");
-const nextBtn = document.querySelector("#next");
-const backBtn = document.querySelector("#back");
-const panel = document.querySelector("#panel");
+// Validate form
+const form = document.querySelector("#form");
+const errorEmail = document.querySelector("#error-email");
+const errorPhone = document.querySelector("#error-phone");
+const errorMessage = document.querySelector("#error-message");
+const submitBtn = document.querySelector("#submit-btn");
 
-if (sessionStorage.getItem("volume")) {
-  video.volume = sessionStorage.getItem("volume");
-  volume.value = sessionStorage.getItem("volume") * 100;
-}
-const totalCountVidio = 3;
-let nowVideo = 1;
+submitBtn.addEventListener("click", sendMessage);
+// form.onclick = (event) => event.preventDefault();
 
-function backVideo() {
-  stopVideo();
-  nowVideo--;
-  if (nowVideo <= 0) {
-    nowVideo = totalCountVidio;
-  }
-  video.src = `./assets/videos/${nowVideo}.mp4`;
-  video.play();
-  playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  progressCurrent.classList.remove("active");
-}
-function nextVideo() {
-  stopVideo();
-  nowVideo++;
-  if (nowVideo > totalCountVidio) {
-    nowVideo = 1;
-  }
-  video.src = `./assets/videos/${nowVideo}.mp4`;
-  video.play();
-  playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  progressCurrent.classList.remove("active");
-}
-
-function playVideo() {
-  video.play();
-  panel.classList.add("active");
-}
-function pauseVideo() {
-  video.pause();
-}
-function stopVideo() {
-  video.pause();
-  video.currentTime = 0;
-  video.playbackRate = 1;
-  speedVideo.textContent = "x" + video.playbackRate;
-  playPauseBtn.classList.remove("active");
-  mainPlayPauseBtn.classList.remove("active");
-  progressCurrent.classList.remove("active");
-}
-
-function offVolumeVideo() {
-  sessionStorage.setItem("value", video.volume);
-  video.volume = 0;
-  volume.value = 0;
-  volumeBtn.classList.add("active");
-}
-
-function onVolumeVideo() {
-  video.volume = sessionStorage.getItem("volume");
-  volume.value = sessionStorage.getItem("volume") * 100;
-  volumeBtn.classList.remove("active");
-}
-
-function volumeVideo() {
-  let v = this.value;
-  video.volume = v / 100;
-  sessionStorage.setItem("volume", video.volume);
-}
-
-function onClickVolumeBtn() {
-  if (volumeBtn.classList.contains("active")) {
-    onVolumeVideo();
+function sendMessage(event) {
+  let email = form.elements.email.value;
+  let isEmailValid = isValid(email, EMAIL_REGEXP);
+  let phone = form.elements.phone.value;
+  let isPhoneValid = isValid(phone, PHONE__REGEXP);
+  let message = form.elements.message.value;
+  event.preventDefault();
+  if (email == "" || !isEmailValid) {
+    errorEmail.classList.add("active");
   } else {
-    offVolumeVideo();
+    errorEmail.classList.remove("active");
   }
-}
-
-function speedUpVideo() {
-  playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  video.play();
-  if (video.playbackRate <= 1) {
-    video.playbackRate = 1.25;
-  } else if (video.playbackRate == 1.25) {
-    video.playbackRate = 1.5;
-  } else if (video.playbackRate == 1.5) {
-    video.playbackRate = 1.8;
-  } else if (video.playbackRate == 1.8) {
-    video.playbackRate = 2;
+  if (phone == "" || !isPhoneValid) {
+    errorPhone.classList.add("active");
   } else {
-    video.playbackRate = 1;
+    errorPhone.classList.remove("active");
   }
-  speedVideo.textContent = "x" + video.playbackRate;
-}
-
-function speedDownVideo() {
-  playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  video.play();
-  if (video.playbackRate >= 1) {
-    video.playbackRate = 0.75;
-  } else if (video.playbackRate == 0.75) {
-    video.playbackRate = 0.5;
-  } else if (video.playbackRate == 0.5) {
-    video.playbackRate = 0.25;
+  if (message === "") {
+    errorMessage.classList.add("active");
   } else {
-    video.playbackRate = 1;
+    errorMessage.classList.remove("active");
   }
-  speedVideo.textContent = "x" + video.playbackRate;
-}
 
-function onClickPlayPause() {
-  playPauseBtn.classList.toggle("active");
-  mainPlayPauseBtn.classList.toggle("active");
-  if (playPauseBtn.classList.contains("active")) {
-    playVideo();
-  } else {
-    video.pause();
-  }
-  video.playbackRate = 1;
-  speedVideo.textContent = "x" + video.playbackRate;
-}
-
-const progressCurrent = document.querySelector("#progress-current");
-
-function progressUpdate() {
-  const d = video.duration;
-  let c = video.currentTime;
-  progressBar.value = (100 * c) / d;
-  progressCurrent.textContent = Math.round(progress.value) + "%";
-  if (progressBar.value >= 51) {
-    progressCurrent.classList.add("active");
+  if (isEmailValid && isPhoneValid && message !== "") {
+    alert("Your message was sent");
   }
 }
 
-function rewindVideo() {
-  playPauseBtn.classList.add("active");
-  mainPlayPauseBtn.classList.add("active");
-  let w = this.offsetWidth;
-  let p = event.offsetX;
-  this.value = (100 * p) / w;
-  video.pause();
-  video.currentTime = (video.duration * p) / w;
-  video.play();
+const EMAIL_REGEXP =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+const PHONE__REGEXP =
+  /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+
+function isValid(value, regexp) {
+  return regexp.test(value);
 }
-
-playPauseBtn.addEventListener("click", onClickPlayPause);
-mainPlayPauseBtn.addEventListener("click", onClickPlayPause);
-stopBtn.addEventListener("click", stopVideo);
-speedUpBtn.addEventListener("click", speedUpVideo);
-speedDownBtn.addEventListener("click", speedDownVideo);
-volume.addEventListener("input", volumeVideo);
-volumeBtn.addEventListener("click", onClickVolumeBtn);
-video.addEventListener("timeupdate", progressUpdate);
-progressBar.addEventListener("click", rewindVideo);
-nextBtn.addEventListener("click", nextVideo);
-backBtn.addEventListener("click", backVideo);
-
-function visiblePanel() {
-  panel.classList.add("active");
-}
-function hiddenPanel() {
-  panel.classList.remove("active");
-}
-
-const videoBlock = document.querySelector(".video");
-videoBlock.addEventListener("mouseover", visiblePanel);
-videoBlock.addEventListener("mouseout", hiddenPanel);
-video.addEventListener("click", onClickPlayPause);
-
-const playlisBtn = document.querySelector("#playlistBtn");
-const playlist = document.querySelector("#playlist");
-
-function activePlaylist() {
-  playlist.classList.toggle("active");
-}
-
-playlisBtn.addEventListener("click", activePlaylist);
-
-const video1 = document.querySelector("#video-1");
-const video2 = document.querySelector("#video-2");
-const video3 = document.querySelector("#video-3");
-
-const videoFiles = document.querySelectorAll(".playlist__item");
-
-function chooseVideo(event) {
-  stopVideo();
-  videoFiles.forEach((el) => el.classList.remove("active"));
-  event.target.classList.add("active");
-  const file = event.target.dataset.video;
-  video.src = `./assets/videos/${file}.mp4`;
-  onClickPlayPause();
-}
-
-videoFiles.forEach((el) => el.addEventListener("click", chooseVideo));
