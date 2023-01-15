@@ -7,4 +7,4 @@
     - CSS: perfect pixel, flex, grid, adaptive and responsive layout
     - JS: video-player, burger-menu, languages and themes toggling, images choosing and caching, session storage entry, button switching, form validation, automatic year change.
 
-![screenshot](https://user-images.githubusercontent.com/94283519/212483695-d4ece0a0-972d-4bde-9ae1-7b989f942e23.png)
+![screen](https://user-images.githubusercontent.com/94283519/212532041-818e0f9d-93e0-4fad-9b6c-ee2608110ed6.png)
